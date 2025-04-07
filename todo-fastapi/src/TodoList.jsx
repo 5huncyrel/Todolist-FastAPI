@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState, useEffect } from "react";
 
 export default function TodoList() {
   const [tasks, setTasks] = useState([]);
@@ -7,44 +7,101 @@ export default function TodoList() {
   const [editingId, setEditingId] = useState(null);
   const [editText, setEditText] = useState("");
   const [editingText, setEditingText] = useState("");
+  
+  // Your FastAPI backend URL
+  const BASE_URL = "https://todolist-fastapi-clcc.onrender.com";
 
-  // Remove fetchTasks() and mock it here instead
-
-  // Add a new task locally
-  const addTask = () => {
+  // Fetch tasks from the backend on component mount
+  useEffect(() => {
+    fetchTasks();
+  }, []);
+  
+  // Fetch all tasks from the FastAPI backend
+  const fetchTasks = async () => {
+    try {
+      const response = await fetch(`${BASE_URL}/todos/`);
+      if (!response.ok) {
+        throw new Error("Failed to fetch tasks");
+      }
+      const data = await response.json();
+      setTasks(data);
+    } catch (error) {
+      console.error("Error fetching tasks:", error);
+    }
+  };
+  
+  // Add a new task to the backend
+  const addTask = async () => {
     if (editText.trim()) {
       const newTask = {
-        id: tasks.length + 1,  // Assign a new unique ID
         title: editText,
         completed: false,
       };
-      setTasks([...tasks, newTask]);
-      setEditText("");  // Clear input field
+
+      const response = await fetch(`${BASE_URL}/todos/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newTask),
+      });
+
+      if (response.ok) {
+        fetchTasks(); 
+        setEditText(""); 
+      }
     }
   };
 
-  // Update a task locally
-  const updateTask = (id) => {
-    const updatedTasks = tasks.map((task) =>
-      task.id === id ? { ...task, title: editingText } : task
-    );
-    setTasks(updatedTasks);
-    setEditingId(null);
-    setEditingText("");  // Reset only `editingText`, not `editText`
+  // Update a task on the backend
+  const updateTask = async (id) => {
+    const updatedTask = {
+      title: editingText,
+      completed: tasks.find((task) => task.id === id).completed,
+    };
+
+    const response = await fetch(`${BASE_URL}/todos/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedTask),
+    });
+
+    if (response.ok) {
+      fetchTasks();
+      setEditingId(null);
+      setEditingText(""); 
+    }
   };
 
-  // Toggle the completed status of a task locally
-  const toggleComplete = (id) => {
-    const updatedTasks = tasks.map((task) =>
-      task.id === id ? { ...task, completed: !task.completed } : task
-    );
-    setTasks(updatedTasks);
+  // Toggle the completed status of a task
+  const toggleComplete = async (id) => {
+    const taskToUpdate = tasks.find((task) => task.id === id);
+    const updatedTask = { ...taskToUpdate, completed: !taskToUpdate.completed };
+
+    const response = await fetch(`${BASE_URL}/todos/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedTask),
+    });
+
+    if (response.ok) {
+      fetchTasks();
+    }
   };
 
-  // Delete a task locally
-  const deleteTask = (id) => {
-    const updatedTasks = tasks.filter((task) => task.id !== id);
-    setTasks(updatedTasks);
+  // Delete a task from the backend
+  const deleteTask = async (id) => {
+    const response = await fetch(`${BASE_URL}/todos/${id}`, {
+      method: "DELETE",
+    });
+
+    if (response.ok) {
+      fetchTasks(); 
+    }
   };
 
   const filteredTasks = tasks.filter((task) => {
@@ -59,8 +116,8 @@ export default function TodoList() {
         <input
           type="text"
           placeholder="Add new task..."
-          value={editText}
-          onChange={(e) => setEditText(e.target.value)}
+          value={editText} 
+          onChange={(e) => setEditText(e.target.value)} 
         />
         <button className="add-btn" onClick={addTask}>
           ➕ Add Task
@@ -133,7 +190,7 @@ export default function TodoList() {
                   className="edit-btn"
                   onClick={() => {
                     setEditingId(task.id);
-                    setEditingText(task.title);
+                    setEditingText(task.title); 
                   }}
                 >
                   ✎ Edit
