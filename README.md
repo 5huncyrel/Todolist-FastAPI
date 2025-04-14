@@ -42,6 +42,7 @@
    ```bash
    npm run dev
 
+---
 
 ## 📡 Backend API Endpoints
 
