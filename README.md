@@ -1,10 +1,10 @@
 # ✅ To-Do List App (FastAPI + React)
 
 ## 🔗 Link to Frontend (Firebase)
-- [Frontend Link](https://todo-fastapi-6424a.web.app/)
+- https://todo-fastapi-6424a.web.app/
 
 ## 🔗 Link to Backend (Render)
-- [Backend Link](https://todolist-fastapi-clcc.onrender.com/)
+- https://todolist-fastapi-clcc.onrender.com/
 
 ---
 
@@ -118,7 +118,7 @@
     "message": "Todo deleted"
   }
 
-6. **Filter Todos by Status**
+6. **Filter a Task by Status**
 - **URL:** https://todolist-fastapi-clcc.onrender.com/todos/filter/{status}
 - **Method**: `GET`
 - **Request:** `https://todolist-fastapi-clcc.onrender.com/todos/filter/completed`
@@ -128,7 +128,7 @@
       {
         "id": 1,
         "title": "Play a guitar",
-        "completed": trye
+        "completed": try
       }
       {
       "id": 2,
