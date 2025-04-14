@@ -80,7 +80,7 @@
 3. Create a Task  
 - **URL:** https://todolist-fastapi-clcc.onrender.com/todos/
 - **Method**: `POST`
-- **Request Body:**
+- **Request:**
   ```json
   {
     "title": "Ride a bike",
