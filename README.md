@@ -49,6 +49,7 @@
 1. **Fetch All Tasks**  
 - **URL:** https://todolist-fastapi-clcc.onrender.com/todos/
 - **Method**: `GET`
+- **Request:** `https://todolist-fastapi-clcc.onrender.com/todos/`
 - **Response:**
   ```json
   [
@@ -67,6 +68,7 @@
 2. **Fetch a Single Task by ID**  
 - **URL:** https://todolist-fastapi-clcc.onrender.com/todos/{id}
 - **Method**: `GET`
+- **Request:** `https://todolist-fastapi-clcc.onrender.com/todos/1`
 - **Response:**
   ```json
   {
