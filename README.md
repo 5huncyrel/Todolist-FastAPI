@@ -129,7 +129,7 @@
       {
         "id": 1,
         "title": "Play a guitar",
-        "completed": try
+        "completed": true
       }
       {
       "id": 2,
