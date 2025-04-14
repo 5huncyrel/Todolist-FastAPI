@@ -29,10 +29,16 @@
 
 ### 💻 Frontend (React)
 1. Navigate to the `frontend/` folder.
-2. Install dependencies:
+2. Create the project using Vite:
+   ```bash
+   npm create vite@latest todo-app --template react
+4. Navigate into the project folder:
+   ```bash
+   cd todo-app
+6. Install dependencies:
    ```bash
    npm install
-3. Run the app locally:
+7. Run the app locally:
    ```bash
    npm run dev
 
@@ -40,7 +46,7 @@
 ### 📡 Backend API Endpoints
 
 1. **Fetch All Tasks**  
-- **URL:** `https://todolist-fastapi-clcc.onrender.com/todos/`
+- **URL:** https://todolist-fastapi-clcc.onrender.com/todos/
 - - **Method**: `GET`
 - **Response:**
   ```json
@@ -58,7 +64,7 @@
   ]
 
 2. **Fetch a Single Task by ID**  
-- **URL:** `https://todolist-fastapi-clcc.onrender.com/todos/{id}`
+- **URL:** https://todolist-fastapi-clcc.onrender.com/todos/{id}
 - - **Method**: `GET`
 - **Response:**
   ```json
@@ -69,7 +75,7 @@
   }
 
 ### 3. Create a Task  
-- **URL:** `https://todolist-fastapi-clcc.onrender.com/todos/`
+- **URL:** https://todolist-fastapi-clcc.onrender.com/todos/
 - - **Method**: `POST`
 - **Request Body:**
   ```json
@@ -86,7 +92,7 @@
   }
 
 4. **Update a Task by ID**  
-- **URL:** `https://todolist-fastapi-clcc.onrender.com/todos/{id}`
+- **URL:** https://todolist-fastapi-clcc.onrender.com/todos/{id}
 - **Method**: `PUT`
 - **Request:**
   ```json
@@ -103,9 +109,9 @@
   }
 
 5. **Delete a Task by ID**  
-- **URL:** `https://todolist-fastapi-clcc.onrender.com/todos/{id}`
+- **URL:** https://todolist-fastapi-clcc.onrender.com/todos/{id}
 - - **Method**: `DELETE`
-- **Request:** https://todolist-fastapi-clcc.onrender.com/todos/4
+- **Request:** `https://todolist-fastapi-clcc.onrender.com/todos/4`
 - **Response:**
   ```json
   {
@@ -113,9 +119,9 @@
   }
 
 6. **Filter Todos by Status**
-- **URL:** `https://todolist-fastapi-clcc.onrender.com/todos/filter/{status}`
+- **URL:** https://todolist-fastapi-clcc.onrender.com/todos/filter/{status}
 - **Method**: `GET`
-- **Request:** https://todolist-fastapi-clcc.onrender.com/todos/filter/completed
+- **Request:** `https://todolist-fastapi-clcc.onrender.com/todos/filter/completed`
 - **Response:**
     ```json
     [
