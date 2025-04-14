@@ -48,7 +48,7 @@
 
 1. **Fetch All Tasks**  
 - **URL:** https://todolist-fastapi-clcc.onrender.com/todos/
-- - **Method**: `GET`
+- **Method**: `GET`
 - **Response:**
   ```json
   [
@@ -66,7 +66,7 @@
 
 2. **Fetch a Single Task by ID**  
 - **URL:** https://todolist-fastapi-clcc.onrender.com/todos/{id}
-- - **Method**: `GET`
+- **Method**: `GET`
 - **Response:**
   ```json
   {
@@ -75,9 +75,9 @@
     "completed": false
   }
 
-### 3. Create a Task  
+3. Create a Task  
 - **URL:** https://todolist-fastapi-clcc.onrender.com/todos/
-- - **Method**: `POST`
+- **Method**: `POST`
 - **Request Body:**
   ```json
   {
@@ -111,7 +111,7 @@
 
 5. **Delete a Task by ID**  
 - **URL:** https://todolist-fastapi-clcc.onrender.com/todos/{id}
-- - **Method**: `DELETE`
+- **Method**: `DELETE`
 - **Request:** `https://todolist-fastapi-clcc.onrender.com/todos/4`
 - **Response:**
   ```json
