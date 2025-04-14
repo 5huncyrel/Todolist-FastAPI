@@ -13,7 +13,7 @@
 
 ### 📦 Backend (FastAPI)
 
-1. Clone the repository or navigate to the `backend/` folder.
+1. Navigate to the `backend/` folder.
 2. Create and activate a virtual environment:
    ```bash
    python -m venv venv
@@ -21,8 +21,10 @@
 3. Install dependencies:
    ```bash
    pip install fastapi uvicorn sqlalchemy psycopg2-binary pydantic
-
-4. Run the FastAPI server locally:
+4. Generate a requirements.txt using:
+   ```bash
+   pip freeze > requirements.txt
+5. Run the FastAPI server locally:
    ```bash
    uvicorn main:app --reload
 
